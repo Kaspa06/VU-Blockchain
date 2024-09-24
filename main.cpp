@@ -4,7 +4,8 @@
 #include <sstream>
 #include <iomanip>
 #include <algorithm>
-#include <cmath> 
+#include <cmath>
+#include <fstream>
 
 using namespace std;
 
@@ -140,20 +141,62 @@ string multiplyBitsByWordSum(string bits, int wordSum) {
     return bits;
 }
 
-int main() {
-    string input;
-    cout << "Input: " << endl;
-    cin >> input;
+// Function to process input and generate the hash
+void processInput(const string& input, ofstream& outputFile) {
+    string modifiedInput = input + to_string(input.length()); // Salt the input by appending its length
 
-    // Salt the input by appending its length
-    input += to_string(input.length()); //Instantly add input length number to input
-
-    modifyInput(input);
-    string binaryResult = inputToBits(input);
-    int wordSum = computeWordSum(input);
+    modifyInput(modifiedInput);
+    string binaryResult = inputToBits(modifiedInput);
+    int wordSum = computeWordSum(modifiedInput);
     string modifiedBits = multiplyBitsByWordSum(binaryResult, wordSum);
-    string hashResult = bitsToHex(modifiedBits, input);
-    cout << "Input converted to 64-character hexadecimal hash: " << hashResult << endl;
+    string hashResult = bitsToHex(modifiedBits, modifiedInput);
+
+    // Output the hash
+    outputFile << "Hash: " << hashResult << endl;
+}
+
+int main() {
+    int choice;
+    cout << "Select input method: " << endl;
+    cout << "1. Input by hand" << endl;
+    cout << "2. Input from file (konstitucija.txt)" << endl;
+    cin >> choice;
+
+    ofstream outputFile("results.txt");
+
+    if (!outputFile.is_open()) {
+        cout << "Error opening output file!" << endl;
+        return 1;
+    }
+
+    if (choice == 1) {
+        string input;
+        cout << "Enter input: ";
+        cin.ignore(); // To ignore the newline character left in the input buffer
+        getline(cin, input);
+
+        processInput(input, outputFile); // Process the input and write to file
+
+    } else if (choice == 2) {
+        ifstream inputFile("konstitucija.txt");
+
+        if (!inputFile.is_open()) {
+            cout << "Error opening input file!" << endl;
+            return 1;
+        }
+
+        string line;
+        while (getline(inputFile, line)) {
+            processInput(line, outputFile); // Process each line and write to file
+        }
+
+        inputFile.close();
+    } else {
+        cout << "Invalid choice!" << endl;
+    }
+
+    outputFile.close();
+    cout << "Hash results saved to results.txt" << endl;
 
     return 0;
 }
