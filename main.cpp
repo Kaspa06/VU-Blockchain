@@ -143,7 +143,7 @@ string multiplyBitsByWordSum(string bits, int wordSum) {
 
 // Function to process input and generate the hash
 void processInput(const string& input, ofstream& outputFile) {
-    string modifiedInput = input + to_string(input.length()); // Salt the input by appending its length
+    string modifiedInput = input + to_string(input.length()); // length + length.value
 
     cout<<modifiedInput<<endl;
 
