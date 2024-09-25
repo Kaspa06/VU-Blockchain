@@ -145,6 +145,8 @@ string multiplyBitsByWordSum(string bits, int wordSum) {
 void processInput(const string& input, ofstream& outputFile) {
     string modifiedInput = input + to_string(input.length()); // Salt the input by appending its length
 
+    cout<<modifiedInput<<endl;
+
     modifyInput(modifiedInput);
     string binaryResult = inputToBits(modifiedInput);
     int wordSum = computeWordSum(modifiedInput);
