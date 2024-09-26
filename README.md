@@ -76,3 +76,20 @@
 
     // 8. Grąžinti maišos reikšmę
     Return hexResult
+
+### Testavimas
+#### Maišos funkcija yra deterministinė
+- Sumaišius tą patį simbolį, identiškus įvedimus rezultatas yra toks pats. Todėl galime teigti, kad sukurta maišos funkcija yra deterministinė.
+-- Visi testai buvo atlikti minimum 5 kartus tam, kad įsitikinti, kad rezultatas nesikeičia.
+##### Pavyzdžiai:
+###### Simbolio a hash reikšmė:
+    0c2520f53a712f93548afd251f0b293e6979d3c847b96c7262cfa5b7f2eaf242
+###### Stringo Lietuva hash reikšmė: 
+    4378771bce67a635bb4be69ad26ddbf8865412942d112e6f686603eff36e6879
+###### Stringo lietuva hash reikšmė:
+    2d116ece8bd4998c2eb05499a026ac5175eb3190e722b8102506b2e08c424e19
+###### Stringo lietuva! hash reikšmė:
+    b6287a2c58212052b37925fe8237ab0102c607551baced149b2342f642304976
+###### Stringo Lietuva! hash reikšmė:
+    4f10293ba2463f9dee1cd598921eb752623d1d782613d0136122d1be7d7821b9
+        
