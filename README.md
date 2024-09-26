@@ -97,6 +97,7 @@
 ![Screenshot 2024-09-26 210517](https://github.com/user-attachments/assets/c0418561-2326-4efb-a82e-324c509c3e0d)
 
 #### Kolizijos patikra:
+- Šiam testui atlikti buvo sugeneruota 100 000 eilučių porų (25 000 porų, kurių ilgis 10 simbolių, kitas 25 000 porų, kurių ilgis - 100, dar kitas 25 000 poras - 500, ir galiausiai likusias 25 000 poras, kurių ilgis - 1000 simbolių.) ir patikrint, ar iš viso atvejais gautos poros maišos nesutampa.
 | Stringo ilgis           | 10  | 100 | 500 | 1000 |
 | ----------------------- | --- | --- | --- | ---- |
 | Time taken to read data | 0   | 0   | 0   | 0    |
