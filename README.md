@@ -96,3 +96,7 @@
 #### Maišos funkcijos efektyvumas
 ![Screenshot 2024-09-26 210517](https://github.com/user-attachments/assets/c0418561-2326-4efb-a82e-324c509c3e0d)
 
+#### Kolizijos patikra:
+| Stringo ilgis           | 10  | 100 | 500 | 1000 |
+| ----------------------- | --- | --- | --- | ---- |
+| Time taken to read data | 0   | 0   | 0   | 0    |
