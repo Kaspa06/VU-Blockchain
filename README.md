@@ -92,4 +92,7 @@
     b6287a2c58212052b37925fe8237ab0102c607551baced149b2342f642304976
 ###### Stringo Lietuva! hash reikšmė:
     4f10293ba2463f9dee1cd598921eb752623d1d782613d0136122d1be7d7821b9
-        
+
+#### Maišos funkcijos efektyvumas
+![Screenshot 2024-09-26 210517](https://github.com/user-attachments/assets/c0418561-2326-4efb-a82e-324c509c3e0d)
+
