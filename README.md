@@ -55,7 +55,16 @@
         if wordSum == 0
             Break the loop
 
-    // 5. Konvertuoti į šešioliktainę reikšmę
+    //5. Taikyti druskos pagrindu sukurtą transformaciją
+       Sukurti salt = 0
+       kiekvienam simboliui c iš įvesties
+           salt += ASCII reikšmė * (pozicija + 1)
+    
+       kiekvienam bitui b binaryResult
+           saltBit = (salt >> (b pozicija % 64)) & 1
+           b = XOR tarp b ir saltBit
+
+    // 6. Konvertuoti į šešioliktainę reikšmę
     Create hexResult = ""
     Create rollingValue = 1
     for each 4-bit chunk in binaryResult
@@ -64,17 +73,17 @@
         value = value * rollingValue * (multiplier based on input length) * non-linearity (sin function)
         Convert value to hexadecimal and append to hexResult
 
-    // 6. Modifikuoti šešioliktainę reikšmę
+    // 7. Modifikuoti šešioliktainę reikšmę
     for each character c in hexResult
         Increment hex character c using helper function
 
-    // 7. Užtikrinti, kad maiša būtų 64 simbolių ilgio
+    // 8. Užtikrinti, kad maiša būtų 64 simbolių ilgio
     if hexResult length > 64
         Truncate hexResult to 64 characters
     else
         Append '0' to hexResult until length is 64
 
-    // 8. Grąžinti maišos reikšmę
+    // 9. Grąžinti maišos reikšmę
     Return hexResult
 
 ### Testavimas
