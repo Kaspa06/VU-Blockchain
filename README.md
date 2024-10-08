@@ -106,6 +106,7 @@
 
 #### Hash'ų procentinis "skirtingumas"
 - Šiam testui atlikti buvo sugeneruota 100 000 eilučių porų (25 000 porų, kurių ilgis 10 simbolių, kitas 25 000 porų, kurių ilgis - 100, dar kitas 25 000 poras - 500, ir galiausiai likusias 25 000 poras, kurių ilgis - 1000 simbolių.) ir patikrint ir įvertinti, kaip skiriasi vieno simbolio skirtumo porų hash'ai:
+- V0.2 Iš esmės pakeista hash'o procentinio skirtingumo funkcija pasitelkiant ChatGPT pagalbą, kadangi nuojauta kuždė, kad rezultatai nebuvo skaičiuojami teisingai
 
 | Metric               | Value          |
 |----------------------|----------------|
