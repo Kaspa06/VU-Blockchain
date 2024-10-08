@@ -139,3 +139,42 @@
 
 ![image](https://github.com/user-attachments/assets/4d80cdae-c1a6-4646-bebe-1de8cf4447e9)
 
+#### Kolizijos patikra:
+- Mano Hash funkcija:
+
+| Stringo ilgis           | 10  | 100 | 500 | 1000 |
+| ----------------------- | --- | --- | --- | ---- |
+| Kolizijų skaičius       | 0   | 0   | 0   | 0    |
+
+- SHA256 funkcija:
+
+| Stringo ilgis           | 10  | 100 | 500 | 1000 |
+| ----------------------- | --- | --- | --- | ---- |
+| Kolizijų skaičius       | 0   | 0   | 0   | 0    |
+
+#### Hash'ų procentinis "skirtingumas"
+- Mano Hash funkcija:
+
+| Metric               | Value          |
+|----------------------|----------------|
+| Number of pairs       | 50,000        |
+| Min Hex Difference    | 36.3281%      |
+| Max Hex Difference    | 63.2812%      |
+| Avg Hex Difference    | 49.9825%      |
+| Min Bit Difference    | 71.875%       |
+| Max Bit Difference    | 100%          |
+| Avg Bit Difference    | 93.7361%      |
+| Time taken for hashing | 67.74s       |
+
+- SHA256 funkcija:
+
+| Metric               | Value          |
+|----------------------|----------------|
+| Number of pairs       | 50,000        |
+| Min Hex Difference    | 36.7188%      |
+| Max Hex Difference    | 62.8906%      |
+| Avg Hex Difference    | 50.0027%      |
+| Min Bit Difference    | 78.125%       |
+| Max Bit Difference    | 100%          |
+| Avg Bit Difference    | 93.7484%      |
+| Time taken for hashing | 2.76s        |
