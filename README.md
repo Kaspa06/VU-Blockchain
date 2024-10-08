@@ -111,12 +111,12 @@
 | Metric               | Value          |
 |----------------------|----------------|
 | Number of pairs       | 50,000        |
-| Min Hex Difference    | 49.9825%      |
-| Max Hex Difference    | 36.3281%      |
-| Avg Hex Difference    | 63.2812%      |
-| Min Bit Difference    | 93.7361%      |
-| Max Bit Difference    | 71.875%       |
-| Avg Bit Difference    | 100%          |
+| Min Hex Difference    | 36.3281%      |
+| Max Hex Difference    | 63.2812%      |
+| Avg Hex Difference    | 49.9825%      |
+| Min Bit Difference    | 71.875%       |
+| Max Bit Difference    | 100%          |
+| Avg Bit Difference    | 93.7361%      |
 
 # Papildomos užduotys
 
