@@ -94,7 +94,8 @@
     4f10293ba2463f9dee1cd598921eb752623d1d782613d0136122d1be7d7821b9
 
 #### Maišos funkcijos efektyvumas
-![Screenshot 2024-09-26 210517](https://github.com/user-attachments/assets/c0418561-2326-4efb-a82e-324c509c3e0d)
+![image](https://github.com/user-attachments/assets/b93c2400-592a-4923-b995-d79cc49a40fb)
+
 
 #### Kolizijos patikra:
 - Šiam testui atlikti buvo sugeneruota 100 000 eilučių porų (25 000 porų, kurių ilgis 10 simbolių, kitas 25 000 porų, kurių ilgis - 100, dar kitas 25 000 poras - 500, ir galiausiai likusias 25 000 poras, kurių ilgis - 1000 simbolių.) ir patikrint, ar iš viso atvejais gautos poros maišos nesutampa.
@@ -126,8 +127,12 @@
 | Eilučių sk | 1       | 2       | 4       | 8       | 16      | 32      | 64      | 128     | 256     | 512     |
 |------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 | Laikas (s) | 0.000448| 0.000899| 0.001   | 0.001997| 0.002885| 0.004985| 0.007979| 0.018613| 0.039893| 0.089325|
+![image](https://github.com/user-attachments/assets/804f1a62-65c8-426b-819a-92ebb71253cb)
 
-#### Mano SHA256 nuskaitant konstitucija.txt
+
+#### SHA256 nuskaitant konstitucija.txt
 | Eilučių sk | 1       | 2       | 4       | 8       | 16      | 32      | 64      | 128     | 256     | 512     |
 |------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-| Laikas (s) | 0       | 0       | 0.000595| 0.0007988| 0.0007766| 0.0010096| 0.007979| 0.018613| 0.039893| 0.089325|
+| Laikas (s) | 0       | 0       | 0.000595| 0.0007988| 0.0007766| 0.0010096| 0.001638| 0.0027448| 0.0043952| 0.0091228|
+![image](https://github.com/user-attachments/assets/4d80cdae-c1a6-4646-bebe-1de8cf4447e9)
+
