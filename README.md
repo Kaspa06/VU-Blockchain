@@ -190,4 +190,4 @@
 ##### Hashavimo laikas (50,000 porų)
 - SHA256 Hash funckija buvo 24,54 kartus greitesnė negu mano Hash funkcija. Mano hash funkcija užtruko 67.74 sekundes, tuo tarpu SHA256 užtruko 2.76 sekundes.
 #### Bendros išvados
-- Pagrindinis skirtumas tarp funkcijų yra greitis. SHA256 yra žymiai greitesnė, ypač kai didėja apdorojamų duomenų kiekis. Taip pat SHA256 yra kriptografiškai saugesnė hash funkcija negu manoji ir ji užtikrina mažesnę kolizijų tikimybę, nors jų testuojant ir nebuvo.
+Pagrindinis skirtumas tarp funkcijų yra greitis. SHA256 yra žymiai greitesnė, ypač kai didėja apdorojamų duomenų kiekis. Taip pat SHA256 yra kriptografiškai saugesnė hash funkcija negu manoji ir ji užtikrina mažesnę kolizijų tikimybę, nors jų testuojant ir nebuvo.
