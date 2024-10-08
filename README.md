@@ -111,12 +111,12 @@
 | Metric               | Value          |
 |----------------------|----------------|
 | Number of pairs       | 50,000        |
-| Min Hex Difference    | 36.3281%      |
-| Max Hex Difference    | 63.2812%      |
-| Avg Hex Difference    | 49.9825%      |
-| Min Bit Difference    | 71.875%       |
+| Min Hex Difference    | 1.95312%      |
+| Max Hex Difference    | 62.1094%      |
+| Avg Hex Difference    | 31.5068%      |
+| Min Bit Difference    | 4.6875%       |
 | Max Bit Difference    | 100%          |
-| Avg Bit Difference    | 93.7361%      |
+| Avg Bit Difference    | 59.6374%      |
 
 #### Išvados
 V0.2 versija mano galva atitinka visus hash funkcijos keliamus reikalavimus.
@@ -170,13 +170,12 @@ Mano Hash funkcijos didžiausias trūkumas - našumas. Lyginant su kitais populi
 | Metric               | Value          |
 |----------------------|----------------|
 | Number of pairs       | 50,000        |
-| Min Hex Difference    | 36.3281%      |
-| Max Hex Difference    | 63.2812%      |
-| Avg Hex Difference    | 49.9825%      |
-| Min Bit Difference    | 71.875%       |
+| Min Hex Difference    | 1.95312%      |
+| Max Hex Difference    | 62.1094%      |
+| Avg Hex Difference    | 31.5068%      |
+| Min Bit Difference    | 4.6875%       |
 | Max Bit Difference    | 100%          |
-| Avg Bit Difference    | 93.7361%      |
-| Time taken for hashing | 67.74s       |
+| Avg Bit Difference    | 59.6374%      |
 
 - SHA256 funkcija:
 
@@ -197,9 +196,8 @@ Mano Hash funkcijos didžiausias trūkumas - našumas. Lyginant su kitais populi
 ##### Kolizijos
 - Tiek SHA256, tiek mano Hash funkcija neturėjo nei vienos kolizijos atliekant kolizijų testą.
 ##### Skirtingumo procentai
-- Mano ir SHA256 hash funkcijų skirtumai pagal hex ir bitų "skirtingumo" procentus yra labai panašūs. Abi funkcijos rodo, kad skirtumų procentai tarp hash'ų yra artimi (apie 50% hex skirtumas ir 93–94% bitų skirtumas).
-- Galima teigti, kad tikslas pasiektas, ir kad mano sukurta hash funkcija yra labai arti populiarios SHA256 hash funkcijos funkcionalumo.
+- Mano ir SHA256 hash funkcijų skirtumai pagal hex ir bitų "skirtingumo" procentus vis dėl to taip pat gerokai skiriasi. SHA256 funkcija generuoja hash'us, kurių hex skirtumų vidurkis yra 50.0027%, o mano hash funkcijoje vidutinis hex skirtumas siekia 31.5068%. Taip pat, SHA256 bitų skirtingumo vidurkis yra 93.7484%, kai mano hash funkcijoje šis rodiklis yra žemesnis – 59.6374%.
 ##### Hashavimo laikas (50,000 porų)
 - SHA256 Hash funckija buvo 24,54 kartus greitesnė negu mano Hash funkcija. Mano hash funkcija užtruko 67.74 sekundes, tuo tarpu SHA256 užtruko 2.76 sekundes.
 #### Bendros išvados
-Pagrindinis skirtumas tarp funkcijų yra greitis. SHA256 yra žymiai greitesnė, ypač kai didėja apdorojamų duomenų kiekis. Taip pat SHA256 yra kriptografiškai saugesnė hash funkcija negu manoji ir ji užtikrina mažesnę kolizijų tikimybę, nors jų testuojant ir nebuvo.
+Pagrindinis skirtumas tarp funkcijų yra greitis ir hex bei bitų skirtingumo procentai. SHA256 yra žymiai greitesnė, ypač kai didėja apdorojamų duomenų kiekis. Taip pat SHA256 yra kriptografiškai saugesnė hash funkcija negu manoji ir ji užtikrina mažesnę kolizijų tikimybę, nors jų testuojant ir nebuvo.
