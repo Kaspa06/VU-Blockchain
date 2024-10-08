@@ -178,3 +178,16 @@
 | Max Bit Difference    | 100%          |
 | Avg Bit Difference    | 93.7484%      |
 | Time taken for hashing | 2.76s        |
+
+### Išvados
+##### Hashavimo laiko skirtumas
+- SHA256 algoritmas yra optimizuotas našumui, todėl teste su konstitucija.txt SHA256 funkcija buvo 9,79 karto greitesnė negu mano Hash funkcija.
+##### Kolizijos
+- Tiek SHA256, tiek mano Hash funkcija neturėjo nei vienos kolizijos atliekant kolizijų testą.
+##### Skirtingumo procentai
+- Mano ir SHA256 hash funkcijų skirtumai pagal hex ir bitų "skirtingumo" procentus yra labai panašūs. Abi funkcijos rodo, kad skirtumų procentai tarp hash'ų yra artimi (apie 50% hex skirtumas ir 93–94% bitų skirtumas).
+- Galima teigti, kad tikslas pasiektas, ir kad mano sukurta hash funkcija yra labai arti populiarios SHA256 hash funkcijos funkcionalumo.
+##### Hashavimo laikas (50,000 porų)
+- SHA256 Hash funckija buvo 24,54 kartus greitesnė negu mano Hash funkcija. Mano hash funkcija užtruko 67.74 sekundes, tuo tarpu SHA256 užtruko 2.76 sekundes.
+#### Bendros išvados
+- Pagrindinis skirtumas tarp funkcijų yra greitis. SHA256 yra žymiai greitesnė, ypač kai didėja apdorojamų duomenų kiekis. Taip pat SHA256 yra kriptografiškai saugesnė hash funkcija negu manoji ir ji užtikrina mažesnę kolizijų tikimybę, nors jų testuojant ir nebuvo.
