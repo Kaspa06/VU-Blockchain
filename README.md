@@ -115,3 +115,9 @@
 | Min Bit Difference    | 0.976562%      |
 | Max Bit Difference    | 5.27344%       |
 | Avg Bit Difference    | 3.12704%       |
+
+# Papildomos užduotys
+
+### Sukurtos Hash funkcijos palyginimas su SHA256
+
+- panaudotas SHA256 kodas: https://github.com/System-Glitch/SHA256
