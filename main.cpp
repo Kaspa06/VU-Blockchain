@@ -9,6 +9,7 @@
 #include <chrono>
 #include "file_generator.h"
 #include "hash_evaluator.h"
+#include "SHA256.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -35,7 +36,7 @@ string inputToBits(string& input) {
     string bits;
 
     while (input.length() < 32) {
-        input += 'k'; // might even call it SALT in case the input is too short
+        input += 'blockchain'; // might even call it SALT in case the input is too short
     }
 
     // Convert each character to its 8-bit binary representation
@@ -149,6 +150,27 @@ string multiplyBitsByWordSum(string bits, int wordSum) {
     return bits;
 }
 
+// Function to apply a salt-based transformation to diversify bits
+string applySaltTransformation(string& bits, const string& input) {
+    string saltedBits = bits;
+    size_t inputLength = input.length();
+    unsigned long long salt = 0;
+
+    // Generate a salt value based on the input length
+    for (size_t i = 0; i < inputLength; ++i) {
+        salt += input[i] * (i + 1);  // Use character position to modify the salt
+    }
+    
+    // XOR each bit with the salt, modifying the salt value based on the index
+    for (size_t i = 0; i < bits.size(); ++i) {
+        int saltBit = (salt >> (i % 64)) & 1;  // Get one bit from the salt
+        saltedBits[i] = (saltBit ^ (bits[i] - '0')) + '0';  // XOR with the current bit and store as char
+    }
+
+    return saltedBits;
+}
+
+
 // Function to process input and generate the hash
 void processInput(const string& input, ofstream& outputFile) {
     string modifiedInput = input + to_string(input.length());
@@ -158,11 +180,9 @@ void processInput(const string& input, ofstream& outputFile) {
         string binaryResult = inputToBits(modifiedInput);
         int wordSum = computeWordSum(modifiedInput);
         string modifiedBits = multiplyBitsByWordSum(binaryResult, wordSum);
-        string hashResult = bitsToHex(modifiedBits, modifiedInput);
-
-        // Output the hash
+        string saltedBits = applySaltTransformation(modifiedBits, modifiedInput);
+        string hashResult = bitsToHex(saltedBits, modifiedInput);
         outputFile << "Hash: " << hashResult << endl;
-        // cout << hashResult << endl;
     } catch (const exception& e) {
         cout << "Error occurred: " << e.what() << endl;
     }
@@ -196,12 +216,49 @@ void processNLines(const string& fileName, int numLines, ofstream& outputFile) {
     }
 }
 
+void hashStringWithSHA256(const string& input, ofstream& outputFile) {
+    SHA256 sha256;
+    sha256.update(input); // Hash the input string
+    array<uint8_t, 32> hash = sha256.digest(); // Get the SHA256 digest
+
+    outputFile << "SHA256 Hash: " << SHA256::toString(hash) << endl;
+}
+
+void processNLinesWithSHA256(const string& fileName, int numLines, ofstream& outputFile) {
+    ifstream inputFile(fileName);
+
+    if (!inputFile.is_open()) {
+        cout << "Error opening input file!" << endl;
+        return;
+    }
+
+    string line;
+    int lineCounter = 0;
+
+    // Read and process up to numLines lines
+    while (getline(inputFile, line) && lineCounter < numLines) {
+        hashStringWithSHA256(line, outputFile);
+        lineCounter++;
+    }
+
+    inputFile.close();
+
+    if (lineCounter == 0) {
+        cout << "The file is empty or no lines processed." << endl;
+    } else if (lineCounter < numLines) {
+        cout << "Only " << lineCounter << " lines were processed as the file had fewer lines." << endl;
+    } else {
+        cout << lineCounter << " lines processed successfully." << endl;
+    }
+}
+
 int main() {
     int choice;
     cout << "Select input method: " << endl;
     cout << "1. Input by hand" << endl;
     cout << "2. Input from a file (enter file name)" << endl;
     cout << "3. Generate files" << endl;
+    cout << "4. Hash a file using SHA256" << endl;
     cin >> choice;
 
     ofstream outputFile("results.txt");
@@ -226,14 +283,14 @@ int main() {
         cout << "Enter the number of lines to process: ";
         cin >> numLines;
 
+        // Hash the file content using your custom functions
         auto start = high_resolution_clock::now();
         processNLines(fileName, numLines, outputFile); 
         auto stop = high_resolution_clock::now();
         auto duration = duration_cast<microseconds>(stop - start);
         cout << "Time taken for hashing: " << duration.count() << " microseconds" << endl;
 
-        evaluateFileHashes(fileName);
-
+        evaluateFileHashes("results.txt", false);
     } else if (choice == 3) {
         srand(time(0));  // Seed random generator
 
@@ -244,10 +301,27 @@ int main() {
         FileGenerator::createOneDifferenceFile("diff1.txt", "diff2.txt", 1000, 500);
         FileGenerator::createEmptyFile("empty.txt");
         FileGenerator::createRandomStringPairsFile("string_pairs.txt");
-        FileGenerator::createRandomStringPairsWithOneDifference("string_pairs_one_diff.txt");
+        FileGenerator::createRandomStringPairsWithOneDifference("one_diff.txt");
 
         cout << "All files generated successfully!" << endl;
-    } else {
+    } else if(choice == 4){
+         string fileName;
+        cout << "Enter the file name to hash (with extension): ";
+        cin >> fileName;
+
+        int numLines;
+        cout << "Enter the number of lines to process: ";
+        cin >> numLines;
+
+        auto start = high_resolution_clock::now();
+        processNLinesWithSHA256(fileName, numLines, outputFile);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        cout << "Time taken for hashing with SHA256: " << duration.count() << " microseconds" << endl;
+
+        evaluateFileHashes("results.txt", true);
+    }
+     else {
         cout << "Invalid choice!" << endl;
     }
 
