@@ -127,6 +127,7 @@ V0.2 versija mano galva atitinka visus hash funkcijos keliamus reikalavimus.
 - Iš hash funkcijos rezultato (output'o) praktiškai neįmanoma atgaminti pradinio įvedimo (input'o).
 - Maišos funkcija yra atspari "kolizijai" (angl. collision resistance).
 - Bent minimaliai pakeitus įvedimą, pvz., vietoj "Lietuva" pateikus "lietuva", maišos funkcijos rezultatas-maišos kodas turi skirtis iš esmės, t.y., turi būti tenkinamas taip vadinamas lavinos efektas (angl. Avalanche effect).
+
 Mano Hash funkcijos didžiausias trūkumas - našumas. Lyginant su kitais populiariais generatoriais, mano Hash generatorius yra pernelyg lėtas, ir paprastas užduotis užtrunka atlikti gerokai ilgiau negu jis tai turėtų daryti. 
 
 # Papildomos užduotys
