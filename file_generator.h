@@ -51,22 +51,28 @@ private:
         }
     }
 
-    static void generatePairsWithDifference(std::ofstream& file, int numPairs, int length) {
-        for (int i = 0; i < numPairs; ++i) {
-            std::string str1, str2;
-            for (int j = 0; j < length; ++j) {
-                char randomChar = 'a' + rand() % 26;
-                str1 += randomChar;
-                str2 += randomChar;
-            }
-           
-            int diffIndex = rand() % length;
-            str2[diffIndex] = (str2[diffIndex] == 'a') ? 'b' : 'a';
-
-            file << str1 << std::endl;
-            file << str2 << std::endl;
+ static void generatePairsWithDifference(std::ofstream& file, int numPairs, int length) {
+    for (int i = 0; i < numPairs; ++i) {
+        std::string str1, str2;
+        for (int j = 0; j < length; ++j) {
+            char randomChar = 'a' + rand() % 26;
+            str1 += randomChar;
+            str2 += randomChar;
         }
+
+        // Ensure at least one character is different at diffIndex
+        int diffIndex = rand() % length;
+        char diffChar = str2[diffIndex];
+        do {
+            diffChar = 'a' + rand() % 26; // Ensure a different character
+        } while (diffChar == str2[diffIndex]);
+
+        str2[diffIndex] = diffChar; // Apply the difference
+
+        file << str1 << std::endl;
+        file << str2 << std::endl;
     }
+}
 
 public:
 
